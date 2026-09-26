@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050b14">
+    <title>{% block title %}WiFi Authentication System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="particles" aria-hidden="true"></div>
+
+{% if session.get('user_id') and session.get('role') == 'admin' %}
+<nav class="admin-topbar">
+    <a class="brand" href="{{ url_for('admin.dashboard') }}"><span class="brand-mark">◉</span> WIFI AUTH <small>SYSTEM</small></a>
+    <div class="topbar-right"><span class="live-dot"></span> SYSTEM ONLINE <span class="top-date">{{ wifi_ssid }}</span></div>
+</nav>
+{% endif %}
+
+<div class="toast-stack">
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="toast toast-{{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+</div>
+
+{% block body %}{% endblock %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

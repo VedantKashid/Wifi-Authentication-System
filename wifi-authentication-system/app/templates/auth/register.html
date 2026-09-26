@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Register | Secure WiFi{% endblock %}
+{% block body %}
+<main class="auth-shell">
+    <div class="auth-brand"><a href="{{ url_for('auth.index') }}"><span class="brand-mark">◉</span> SECURE<span>NET</span></a><div class="connection-pill"><span class="signal-bars"><b></b><b></b><b></b><b></b></span> {{ wifi_ssid }}</div></div>
+    <section class="auth-card glass-panel register-card">
+        <div class="auth-icon">✦</div>
+        <div class="eyebrow">NETWORK REGISTRATION</div>
+        <h1>Create Account</h1>
+        <p>Register for authorized WiFi access.</p>
+        <form method="post" novalidate>
+            <label for="username">Username</label>
+            <div class="input-wrap"><span>◌</span><input id="username" type="text" name="username" placeholder="Choose a username" minlength="3" maxlength="30" required></div>
+            <label for="email">Email</label>
+            <div class="input-wrap"><span>@</span><input id="email" type="email" name="email" placeholder="you@example.com" maxlength="120" required></div>
+            <label for="password">Password</label>
+            <div class="input-wrap"><span>⌑</span><input id="password" type="password" name="password" placeholder="Create a strong password" minlength="8" required></div>
+            <label for="confirm_password">Confirm Password</label>
+            <div class="input-wrap"><span>⌑</span><input id="confirm_password" type="password" name="confirm_password" placeholder="Repeat password" minlength="8" required></div>
+            <p class="password-hint">Use 8+ characters with uppercase, lowercase and a number.</p>
+            <button class="primary-btn wide" type="submit">Create Account <span>→</span></button>
+        </form>
+        <div class="auth-divider"><span>ALREADY REGISTERED?</span></div>
+        <a class="secondary-btn wide" href="{{ url_for('auth.login') }}">Back to Login</a>
+    </section>
+</main>
+{% endblock %}

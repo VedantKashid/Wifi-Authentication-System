@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WiFi Authentication System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at 20% 20%, #123c52 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, #102b45 0%, transparent 35%),
+                #050b12;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 45px 45px;
+            animation: moveGrid 15s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(45px, 45px);
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+            padding: 50px 35px;
+            border: 1px solid rgba(0, 220, 255, 0.35);
+            border-radius: 25px;
+            background: rgba(8, 18, 30, 0.88);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(0, 200, 255, 0.12);
+        }
+
+        .wifi {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 210, 255, 0.08);
+            border: 1px solid rgba(0, 220, 255, 0.35);
+            font-size: 45px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 220, 255, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 35px rgba(0, 220, 255, 0.5);
+            }
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            color: #00d9ff;
+        }
+
+        .subtitle {
+            color: #9db0bd;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 30px;
+            background: rgba(0, 255, 150, 0.08);
+            border: 1px solid rgba(0, 255, 150, 0.25);
+            color: #53ffb1;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #35ff9b;
+            box-shadow: 0 0 10px #35ff9b;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login {
+            background: #00c8ff;
+            color: #031018;
+        }
+
+        .register {
+            border: 1px solid #00c8ff;
+            color: #00d9ff;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25);
+        }
+
+        .features {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .feature {
+            padding: 15px 8px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #b7c5cf;
+            font-size: 13px;
+        }
+
+        .feature strong {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="wifi">📶</div>
+
+    <h1>
+        WiFi <span class="highlight">Authentication</span>
+    </h1>
+
+    <p class="subtitle">
+        Secure network access through intelligent user authentication,
+        session management and access monitoring.
+    </p>
+
+    <div class="status">
+        <span class="dot"></span>
+        Authentication System Online
+    </div>
+
+    <div class="buttons">
+        <a href="/login" class="btn login">Login</a>
+        <a href="/register" class="btn register">Create Account</a>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <strong>🔐 Secure</strong>
+            Protected authentication
+        </div>
+
+        <div class="feature">
+            <strong>📡 WiFi</strong>
+            Network access control
+        </div>
+
+        <div class="feature">
+            <strong>🛡️ Monitor</strong>
+            Access activity tracking
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

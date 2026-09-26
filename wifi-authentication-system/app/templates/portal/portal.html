@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Authenticated | Secure WiFi{% endblock %}
+{% block body %}
+<main class="portal-shell success-shell">
+    <section class="success-card glass-panel">
+        <div class="success-ring"><span>✓</span></div>
+        <div class="eyebrow success-label">AUTHENTICATION SUCCESSFUL</div>
+        <h1>You are connected.</h1>
+        <p>Your device has an authenticated session on <strong>{{ wifi_ssid }}</strong>.</p>
+        <div class="session-grid">
+            <div><span>USER</span><strong>{{ session.get('username') }}</strong></div>
+            <div><span>DEVICE</span><strong>{{ session.get('device_type', 'Unknown') }}</strong></div>
+            <div><span>SESSIONS</span><strong>{{ active_sessions }}</strong></div>
+            <div><span>STATUS</span><strong class="online">● Active</strong></div>
+        </div>
+        <div class="network-status"><span class="signal-bars"><b></b><b></b><b></b><b></b></span><div><strong>WiFi Signal: Excellent</strong><small>Secure network connection established</small></div><span class="online">ONLINE</span></div>
+        <a class="primary-btn" href="{{ url_for('auth.logout') }}">End Session</a>
+    </section>
+</main>
+{% endblock %}
